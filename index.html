@@ -9162,11 +9162,77 @@ const info =
 
 function ajustarTamanhoMapa() {
 
+    if (window.innerWidth <= 900) {
+
+        const maxX =
+            Math.max(
+                ...dados.coordenadas.map(
+                    ponto => Math.abs(ponto[0])
+                )
+            );
+
+        const maxY =
+            Math.max(
+                ...dados.coordenadas.map(
+                    ponto => Math.abs(ponto[1])
+                )
+            );
+
+        const raio =
+            Math.max(
+                maxX,
+                maxY
+            ) * 1.10;
+
+        Plotly.relayout(
+            mapa,
+            {
+                margin: {
+                    l: 10,
+                    r: 5,
+                    t: 10,
+                    b: 15,
+                },
+
+                title: {
+                    text: ""
+                },
+
+                showlegend: false,
+
+                annotations: [],
+
+                xaxis: {
+                    range: [
+                        -raio,
+                        raio
+                    ]
+                },
+
+                yaxis: {
+                    range: [
+                        -raio,
+                        raio
+                    ],
+                    scaleanchor: "x",
+                    scaleratio: 1
+                }
+            }
+        );
+
+        Plotly.restyle(
+            mapa,
+            {
+                "marker.showscale": false
+            },
+            [3]
+        );
+    }
+
     Plotly.Plots.resize(
         mapa
     );
 }
-
 
 window.addEventListener(
     "resize",
