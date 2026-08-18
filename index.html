@@ -455,6 +455,82 @@ button {
     line-height: 1.4;
 }
 
+/* ==================================================
+   RESPONSIVIDADE — TABLET / MOBILE
+   ================================================== */
+
+@media (max-width: 900px) {
+
+    body {
+        padding: 8px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .sidebar {
+        width: 100%;
+        max-height: none;
+        overflow: visible;
+        padding: 12px;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 65vh;
+        min-height: 420px;
+        position: relative;
+        top: auto;
+    }
+
+    #mapa {
+        width: 100%;
+        height: 100%;
+    }
+
+    .info-panel {
+        width: 100%;
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 600px) {
+
+    body {
+        padding: 4px;
+    }
+
+    .sidebar {
+        padding: 10px;
+    }
+
+    .map-container {
+        height: 60vh;
+        min-height: 360px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    select {
+        min-height: 42px;
+        font-size: 16px;
+    }
+
+    input[type="range"] {
+        min-height: 32px;
+    }
+
+    button {
+        min-height: 42px;
+        font-size: 15px;
+    }
+}
+
 </style>
 
 </head>
