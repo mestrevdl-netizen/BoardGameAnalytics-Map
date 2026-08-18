@@ -495,6 +495,34 @@ button {
         width: 100%;
         margin-top: 0;
     }
+
+    /* ==================================================
+   FILTROS MODULARES — MOBILE
+   ================================================== */
+
+    .sidebar .section h2 {
+        cursor: pointer;
+        user-select: none;
+        position: relative;
+        padding-right: 28px;
+    }
+
+    .sidebar .section h2::after {
+        content: "▸";
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 18px;
+    }
+
+    .sidebar .section.mobile-expanded h2::after {
+        content: "▾";
+    }
+
+    .sidebar .section:not(.mobile-expanded) > *:not(h2) {
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {
@@ -9177,6 +9205,45 @@ mapa.addEventListener(
 // ==================================================
 // FUNÇÕES DE FILTRO
 // ==================================================
+
+// ==================================================
+// FILTROS MODULARES — MOBILE
+// ==================================================
+
+function configurarFiltrosMobile() {
+
+    if (window.innerWidth > 900) {
+        return;
+    }
+
+    document
+        .querySelectorAll(".sidebar .section")
+        .forEach(
+            function(section) {
+
+                const titulo =
+                    section.querySelector("h2");
+
+                if (!titulo) {
+                    return;
+                }
+
+                titulo.addEventListener(
+                    "click",
+                    function() {
+
+                        section.classList.toggle(
+                            "mobile-expanded"
+                        );
+
+                    }
+                );
+
+            }
+        );
+}
+
+configurarFiltrosMobile();
 
 function pesosSelecionados() {
 
